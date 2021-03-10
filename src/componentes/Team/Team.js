@@ -9,7 +9,7 @@ const Team = (props) => {
     return (
         <div className='col-lg-4 col-md-6 col-sm-12 text-center my-3'>
             <Link className='text-decoration-none' to={`/team/${idTeam}`}>
-                <div className="card h-100 text-dark">
+                <div style={{backgroundColor:"#0E0A2A"}} className="card h-100 text-white">
                     <img src={strTeamBadge} className="card-img-top p-4" alt={strAlternate} />
                     <div className="card-body">
                         <h2 className="card-title fs-1">{strAlternate}</h2>

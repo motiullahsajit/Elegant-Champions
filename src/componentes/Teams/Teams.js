@@ -9,11 +9,13 @@ const Teams = () => {
             .then(data => setTeams(data.teams))
     }, [])
     return (
-        <div className='container'>
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-                {
-                    teams.map(team => <Team key={team.idTeam} team={team} />)
-                }
+        <div className='container-fuild bg-dark'>
+            <div className="container">
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                    {
+                        teams.map(team => <Team key={team.idTeam} team={team} />)
+                    }
+                </div>
             </div>
         </div>
     );
