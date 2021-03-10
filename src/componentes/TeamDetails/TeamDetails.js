@@ -13,12 +13,16 @@ const TeamDetails = () => {
     const { idTeam } = useParams();
     const [team, setTeam] = useState([])
     useEffect(() => {
-        fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`)
-            .then(res => res.json())
-            .then(data => setTeam(data.teams[0]))
+        const url = `https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`;
+        const fetchData = async () => {
+            const res = await fetch(url)
+            const data = await res.json()
+            return data;
+        }
+        fetchData().then(data => setTeam(data.teams[0]));
     }, [idTeam])
 
-    const { strAlternate, strTeamBadge, strGender, strDescriptionEN, strCountry, strSport, strStadiumDescription, strInstagram, strFacebook, strTwitter, strYoutube, intFormedYear, strStadiumThumb } = team
+    const { strTeam, strTeamBadge, strGender, strDescriptionEN, strCountry, strSport, strStadiumDescription, strInstagram, strFacebook, strTwitter, strYoutube, intFormedYear, strStadiumThumb } = team;
 
     //banner style
     const bannerStyle = {
@@ -28,22 +32,23 @@ const TeamDetails = () => {
         backgroundImage: `linear-gradient(0deg, rgb(206 203 203 / 50%), rgb(247 246 246 / 30%)), url(${strStadiumThumb})`,
         height: '25em',
     }
+
     //conditional bg
     let bgColor;
-    strGender === 'Male' ? bgColor = { backgroundColor: "#3A42FF", borderRadius: "1em" } : bgColor = { backgroundColor: "#FC4D57" }
+    strGender === 'Male' ? bgColor = { backgroundColor: "#0A1527", borderRadius: "1em" } : bgColor = { backgroundColor: "#FC4D57", borderRadius: "1em" }
     return (
         <>
             <div className='container-fluid d-flex align-items-center justify-content-center' style={bannerStyle}>
-                <img className='img-fluid' style={{ maxWidth: '300px' }} src={strTeamBadge} alt={strAlternate} />
+                <img className='img-fluid' style={{ maxWidth: '300px' }} src={strTeamBadge} alt={strTeam} />
             </div>
-            <div className="container-fluid" style={{ backgroundColor: "#0E0A2A" }}>
+            <div className="container-fluid bg-dark">
                 <div className='container text-white py-3'>
-                    <Link className='text-decoration-none' to="/"><h1> <FontAwesomeIcon icon={faChevronCircleLeft} size="1x" /> Home</h1></Link>
+                    <Link className='text-decoration-none text-warning' to="/teams"><h1><FontAwesomeIcon icon={faChevronCircleLeft} size="1x" /> Home</h1></Link>
                     <div className="container my-2 p-3">
                         <div className="row mb-4 p-3" style={bgColor}>
                             <div className="col-md-6">
-                                <div className="card-body text-white">
-                                    <h1 className="card-title">{strAlternate}</h1>
+                                <div className="card-body text-warning">
+                                    <h1 className="card-title">{strTeam}</h1>
                                     <h5 className="card-title"><FontAwesomeIcon icon={faMapMarkerAlt} size="1x" /> Founded: {intFormedYear}</h5>
                                     <h5 className="card-title"><FontAwesomeIcon icon={faFlag} size="1x" /> Country: {strCountry}</h5>
                                     <h5 className="card-title"><FontAwesomeIcon icon={faFutbol} size="1x" /> Sport Type: {strSport}</h5>
@@ -52,7 +57,7 @@ const TeamDetails = () => {
                             </div>
                             <div className="col-md-6">
                                 {
-                                    strGender === 'Male' ? <img className="img-fluid" src={maleImg} alt="" /> : <img className="img-fluid" src={femaleImg} alt="" />
+                                    strGender === 'Male' ? <img className="img-fluid" src={maleImg} alt={strTeam} /> : <img className="img-fluid" src={femaleImg} alt={strTeam} />
                                 }
                             </div>
                         </div>
@@ -61,10 +66,10 @@ const TeamDetails = () => {
                         <p className="card-text">Stadium Description : {strStadiumDescription}</p>
                     </div>
                     <div className="d-flex justify-content-center text-decoration-none">
-                        <a className='text-white m-2' href={`https://${strFacebook}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faFacebook} size="2x" /></a>
-                        <a className='text-white m-2' href={`https://${strTwitter}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faTwitter} size="2x" /></a>
-                        <a className='text-white m-2' href={`https://${strYoutube}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faYoutube} size="2x" /></a>
-                        <a className='text-white m-2' href={`https://${strInstagram}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faInstagram} size="2x" /></a>
+                        <a className='text-primaray m-2' href={`https://${strFacebook}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faFacebook} size="2x" /></a>
+                        <a className='text-danger m-2' href={`https://${strYoutube}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faYoutube} size="2x" /></a>
+                        <a className='text-primaray m-2' href={`https://${strTwitter}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faTwitter} size="2x" /></a>
+                        <a className='text-warning m-2' href={`https://${strInstagram}`} rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faInstagram} size="2x" /></a>
                     </div>
                 </div>
             </div>

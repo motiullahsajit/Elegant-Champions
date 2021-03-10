@@ -16,7 +16,7 @@
 * You come back from the detail page with the Home button
 
 
-### Check out the awesome site
+### Check out the 
 [Visit Site](https://elegant-champions.netlify.app/)
 
 ## Home page!
