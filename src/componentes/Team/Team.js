@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 const Team = (props) => {
-    const { strTeamBadge, strSport, idTeam, strTeam } = props.team
+    const { strTeamBadge, strSport, idTeam, strTeam } = props.team;
     const history = useHistory();
     return (
         <div className='col-lg-4 col-md-6 col-sm-12 text-center my-3'>

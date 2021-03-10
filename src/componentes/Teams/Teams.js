@@ -11,7 +11,7 @@ const Teams = () => {
             return data;
         }
         fetchData().then(data => setTeams(data.teams))
-    }, [])
+    }, []);
     return (
         <div className='container-fuild bg-dark'>
             <div className="container">

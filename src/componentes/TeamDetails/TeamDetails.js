@@ -20,7 +20,7 @@ const TeamDetails = () => {
             return data;
         }
         fetchData().then(data => setTeam(data.teams[0]));
-    }, [idTeam])
+    }, [idTeam]);
 
     const { strTeam, strTeamBadge, strGender, strDescriptionEN, strCountry, strSport, strStadiumDescription, strInstagram, strFacebook, strTwitter, strYoutube, intFormedYear, strStadiumThumb } = team;
 
@@ -31,7 +31,7 @@ const TeamDetails = () => {
         backgroundRepeat: 'no-repeat',
         backgroundImage: `linear-gradient(0deg, rgb(206 203 203 / 50%), rgb(247 246 246 / 30%)), url(${strStadiumThumb})`,
         height: '25em',
-    }
+    };
 
     //conditional bg
     let bgColor;
@@ -43,7 +43,7 @@ const TeamDetails = () => {
             </div>
             <div className="container-fluid bg-dark">
                 <div className='container text-white py-3'>
-                    <Link className='text-decoration-none text-warning' to="/teams"><h1><FontAwesomeIcon icon={faChevronCircleLeft} size="1x" /> Home</h1></Link>
+                    <Link className='text-decoration-none text-warning' to="/home"><h1><FontAwesomeIcon icon={faChevronCircleLeft} size="1x" /> Home</h1></Link>
                     <div className="container my-2 p-3">
                         <div className="row mb-4 p-3" style={bgColor}>
                             <div className="col-md-6">

@@ -4,10 +4,9 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
+import Home from "./componentes/Home/Home";
 import NotFound from "./componentes/NotFound/NotFound";
 import TeamDetails from "./componentes/TeamDetails/TeamDetails";
-import Teams from "./componentes/Teams/Teams";
-import TopBanner from "./componentes/TopBanner/TopBanner";
 
 function App() {
   return (
@@ -15,12 +14,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/'>
-            <TopBanner />
-            <Teams />
+            <Home />
           </Route>
-          <Route exact path='/teams'>
-            <TopBanner />
-            <Teams />
+          <Route exact path='/home'>
+            <Home />
           </Route>
           <Route path='/team/:idTeam'>
             <TeamDetails />
