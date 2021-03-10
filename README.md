@@ -16,8 +16,8 @@
 * You come back from the detail page with the Home button
 
 
-### Click below & check out your fvrt. food...
+### Check out the awesome site
 [Visit Site](https://elegant-champions.netlify.app/)
 
-## Let's take a look!
+## Home page!
 ![legant Champions](src/images/site.png)
