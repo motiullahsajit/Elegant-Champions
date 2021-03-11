@@ -15,9 +15,13 @@ const TeamDetails = () => {
     useEffect(() => {
         const url = `https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`;
         const fetchData = async () => {
-            const res = await fetch(url)
-            const data = await res.json()
-            return data;
+            try {
+                const res = await fetch(url)
+                const data = await res.json()
+                return data;
+            } catch (error) {
+                alert(`sorry could not load data for this error : ${error}`)
+            }
         }
         fetchData().then(data => setTeam(data.teams[0]));
     }, [idTeam]);
